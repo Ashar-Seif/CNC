@@ -124,8 +124,14 @@ Future<void> WriteR() async{
           FloatingActionButton.extended(
                    
         onPressed: () {
-          return const Mariam();
-          // Add your onPressed code here!
+          
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Mariam()
+                                )
+
+                              );
         },
   
         label: const Text('دوس عليا'),
