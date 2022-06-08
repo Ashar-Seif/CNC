@@ -2,6 +2,7 @@
 
 import 'dart:async';
 import '/constants.dart';
+import '/Mariam.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -47,25 +48,25 @@ class _MyHomePageState extends State<MyHomePage> {
 
 Future<void> WriteSquare() async{
     dbRef.child('label').update({
-      'shape': 1
+      'shape': 0
     });
   }
 Future<void> Writetriangle() async{
     dbRef.child('label').update({
-      'shape': 2
+      'shape': 1
     });
   }
 
 
-Future<void> WriteA() async{
+Future<void> WriteR() async{
     dbRef.child('label').update({
-      'shape': 3
+      'shape': 2
     });
   }
   
   Future<void> WriteH() async{
     dbRef.child('label').update({
-      'shape': 4
+      'shape': 3
     });
   }
 
@@ -103,28 +104,36 @@ Future<void> WriteA() async{
                 height:100,),
               onTap: () {
                 Writetriangle();},),  
-                  const SizedBox(width: 400,height: 15,),
+                  const SizedBox(width: 400,height: 20,),
                     GestureDetector(
-              child:SvgPicture.asset("assets/a1.svg",
-              width: 150,
-                height:150, 
+              child:SvgPicture.asset("assets/rectangle.svg",
+              width: 120,
+                height:120, 
                 ),
               onTap: () {
-                WriteA();},),
+                WriteR();},),
                       const SizedBox(width: 400,height: 15,),
                     GestureDetector(
               child:SvgPicture.asset("assets/h.svg",
-              width: 100,
-                height:100, 
+              width: 110,
+                height:110, 
                 ),
               onTap: () {
-                WriteH();},)
-
-      ],
+                WriteH();},),
+                         const SizedBox(width: 400,height: 5,),
+          FloatingActionButton.extended(
+                   
+        onPressed: () {
+          return const Mariam();
+          // Add your onPressed code here!
+        },
+  
+        label: const Text('دوس عليا'),
+        icon: const Icon(Icons.girl),
+        backgroundColor: Color.fromARGB(255, 213, 7, 76), ),],
                 ),
                 );
             } else {
-              // return Text('State: ${snapshot.connectionState}');
               imagewidget = const Center(child: CircularProgressIndicator());
             }
             return imagewidget;
